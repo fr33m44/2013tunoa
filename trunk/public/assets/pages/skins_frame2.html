@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="http://www.uur.cn/wp-content/themes/uur/images/favicon.ico" />
+<title>框架主页皮肤中心</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript" src="../frame/js/jquery-1.4.js"></script>
+<script type="text/javascript" src="../frame/js/highslide/highslide-with-gallery.js"></script>
+<link rel="stylesheet" type="text/css" href="../frame/js/highslide/highslide.css" />
+<script>
+	$(function(){
+		$('.framegrid.nocaption').each(function(){
+			$(".framegrid_cover", this).css({
+				top:"128px",
+				height:"0px"
+			})
+			$(".framegrid_title", this).hide()
+			$(".framegrid_con", this).hide()
+		})
+		$('.framegrid.nocaption').hover(function(){
+			$(".framegrid_cover", this).stop().animate({top:'68px',height:'60px'},{queue:false,duration:160});
+			$(".framegrid_title", this).show()
+			$(".framegrid_con", this).show()
+		}, function() {
+			$(".framegrid_cover", this).stop().animate({top:'125px',height:'0px'},{queue:false,duration:160});
+			$(".framegrid_title", this).hide()
+			$(".framegrid_con", this).hide()
+		});
+	})
+	//图片弹窗
+hs.graphicsDir = '../frame/js/highslide/graphics/';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+
+hs.addSlideshow({
+	interval: 5000,
+	repeat: false,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: .75,
+		position: 'bottom center',
+		hideOnMouseOut: true
+	}
+});
+</script>
+<body>
+	<div class="main">
+	<div class="main_con">
+		<div class="top">
+			<div class="top_left"><img src="images/logo.jpg"/></div>
+			<div class="top_right">
+				<div class="top_right_navLeft"></div>
+				<div class="top_right_navRight">
+					<ul>
+						<li><a href="../index.html">首页</a></li>
+						<li><a href="choose.html">开始体验</a></li>
+						<li class="current">框架皮肤中心</li>
+						<li><a href="skins_login.html">登录页皮肤中心</a></li>
+						<li><a href="split.html">分离版组件</a></li>
+						<li><a href="update.html">更新说明</a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="banner">
+			<div class="baner_con">
+				<a href="choose.html">
+					<img src="images/click.gif"/>
+				</a>
+			</div>
+		</div>
+		<div class="content2">
+	<div class="paging">
+		<span><a href="skins_frame.html">1</a></span>
+		<span class="paging_current"><a href="javascript:;">2</a></span>
+		<span><a href="skins_frame3.html">3</a></span>
+		<span><a href="skins_frame4.html">4</a></span>
+	</div>
+	<div class="clear"></div>		
+			
+			
+<div class="title00">
+	<div class="title00_con">（5）纵向二级列表导航</div>
+</div>
+<div class="box_top"></div>
+<div class="box_middle">
+	<div class="box_item">
+	<div class="framegrid nocaption">
+		<a href="main_preview/sky_list.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/sky_list_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：sky<br />主题风格：blue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/orange_list.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/orange_list_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：orange<br />主题风格：red</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/darkBlue_list.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/darkBlue_list_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：darkBlue<br />主题风格：darkBlue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/vistaBlue_list.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/vistaBlue_list_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：vistaBlue<br />主题风格：blue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/grass_list.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/grass_list_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：grass<br />主题风格：green</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/chinaRed_list.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/chinaRed_list_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：chinaRed<br />主题风格：red</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/armyYellow_list.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/armyYellow_list_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：armyYellow<br />主题风格：yellowGreen</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/darkCrystal_list.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/darkCrystal_list_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：darkCrystal<br />主题风格：darkYellow</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+
+	<div class="clear"></div>
+	</div>
+</div>
+<div class="box_bottom"></div>
+
+
+	
+<div class="title00">
+	<div class="title00_con">（6）纵向抽屉式图标导航</div>
+</div>
+<div class="box_top"></div>
+<div class="box_middle">
+	<div class="box_item">
+	<div class="framegrid nocaption">
+		<a href="main_preview/sky_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/sky_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：sky<br />主题风格：blue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/orange_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/orange_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：orange<br />主题风格：red</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/darkBlue_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/darkBlue_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：darkBlue<br />主题风格：darkBlue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/vistaBlue_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/vistaBlue_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：vistaBlue<br />主题风格：blue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/grass_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/grass_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：grass<br />主题风格：green</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/chinaRed_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/chinaRed_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：chinaRed<br />主题风格：red</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/armyYellow_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/armyYellow_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：armyYellow<br />主题风格：yellowGreen</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/darkCrystal_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/darkCrystal_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：darkCrystal<br />主题风格：darkYellow</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/lightBlue_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/lightBlue_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：lightBlue<br />主题风格：lightBlue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/skyAgain_icon_v.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/skyAgain_icon_v_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：skyAgain<br />主题风格：blue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+
+	<div class="clear"></div>
+	</div>
+</div>
+<div class="box_bottom"></div>
+
+
+	
+<div class="title00">
+	<div class="title00_con">（7）横向多级菜单导航</div>
+</div>
+<div class="box_top"></div>
+<div class="box_middle">
+	<div class="box_item">
+
+	<div class="framegrid nocaption">
+		<a href="main_preview/sky_menu_h.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/sky_menu_h_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：sky<br />主题风格：blue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/orange_menu_h.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/orange_menu_h_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：orange<br />主题风格：red</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/darkBlue_menu_h.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/darkBlue_menu_h_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：darkBlue<br />主题风格：darkBlue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/vistaBlue_menu_h.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/vistaBlue_menu_h_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：vistaBlue<br />主题风格：blue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/grass_menu_h.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/grass_menu_h_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：grass<br />主题风格：green</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/chinaRed_menu_h.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/chinaRed_menu_h_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：chinaRed<br />主题风格：red</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/armyYellow_menu_h.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/armyYellow_menu_h_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：armyYellow<br />主题风格：yellowGreen</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/darkCrystal_menu_h.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/darkCrystal_menu_h_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：darkCrystal<br />主题风格：darkYellow</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+
+	<div class="clear"></div>
+	</div>
+</div>
+<div class="box_bottom"></div>
+
+
+	
+<div class="title00">
+	<div class="title00_con">（8）横向二级导航栏导航</div>
+</div>
+<div class="box_top"></div>
+<div class="box_middle">
+	<div class="box_item">
+
+	<div class="framegrid nocaption">
+		<a href="main_preview/sky_tab_bar_link.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/sky_tab_bar_link_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：sky<br />主题风格：blue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/orange_tab_bar_link.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/orange_tab_bar_link_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：orange<br />主题风格：red</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/darkBlue_tab_bar_link.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/darkBlue_tab_bar_link_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：darkBlue<br />主题风格：darkBlue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/vistaBlue_tab_bar_link.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/vistaBlue_tab_bar_link_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：vistaBlue<br />主题风格：blue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/grass_tab_bar_link.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/grass_tab_bar_link_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：grass<br />主题风格：green</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/chinaRed_tab_bar_link.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/chinaRed_tab_bar_link_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：chinaRed<br />主题风格：red</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/armyYellow_tab_bar_link.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/armyYellow_tab_bar_link_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：armyYellow<br />主题风格：yellowGreen</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>	
+		</a>
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/darkCrystal_tab_bar_link.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/darkCrystal_tab_bar_link_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：darkCrystal<br />主题风格：darkYellow</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>	
+	</div>
+	
+	<div class="framegrid nocaption">
+		<a href="main_preview/lightBlue_tab_bar_link.jpg" class="highslide" onclick="return hs.expand(this)">
+		<div class="picItem3"><img src="main_preview/lightBlue_tab_bar_link_small.jpg"/></div>	
+		<div class="framegrid_cover">
+			<div class="framegrid_title">皮肤名称：lightBlue<br />主题风格：lightBlue</div>
+			<div class="framegrid_con twolinefix">点击查看预览图</div>
+		</div>
+		</a>	
+	</div>
+
+	<div class="clear"></div>
+	</div>
+</div>
+<div class="box_bottom"></div>
+
+
+
+	<div class="paging">
+		<span><a href="skins_frame.html">1</a></span>
+		<span class="paging_current"><a href="javascript:;">2</a></span>
+		<span><a href="skins_frame3.html">3</a></span>
+		<span><a href="skins_frame4.html">4</a></span>
+	</div>
+	<div class="clear"></div>
+			
+		</div>
+		<div class="foot">
+			QUI“UU人” 网页界面集成框架 COPYRIGHT 2010 @ www.quickui.net
+		</div>
+	</div>
+	</div>
+</body>
+</html>

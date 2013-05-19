@@ -25,35 +25,40 @@ class Navigation_Model extends CI_Model {
         $tablename=$this->db->dbprefix("menu");
         $sql="select * from $tablename where id_parent=$uplevel ";
         $menu_item=$this->db->query($sql);
-        $template='';
+        $template="";
         foreach($menu_item->result_array() as $row)
         {
             if($this->_has_childnodes($row['menu_id']))
             {
                 if($row['id_parent'] == '0')
                 {
-                    $template.=  '<div class="accordionHeader"><h2><span>Folder</span>'.$row['menu_name'].'</h2></div>'."\n";
-                    $template.= '<div class="accordionContent"><ul class="tree treeFolder">';
+                    //$template.=  '<div class="accordionHeader"><h2><span>Folder</span>'.$row['menu_name'].'</h2></div>'."\n";
+                    //$template.= '<div class="accordionContent"><ul class="tree treeFolder">';
+                    $template .= "d.add($row[menu_id], $row[id_parent], '$row[menu_name]', null, '', '');\n";
                 }
                 else
                 {
-                    $template.= '<li><a href="'.$row['url'].'" target="navTab">'.$row['menu_name'].'</a>'."\n".'<ul>'."\n";
+                    //$template.= '<li><a href="'.$row['url'].'" target="navTab">'.$row['menu_name'].'</a>'."\n".'<ul>'."\n";
+                    $template .= "d.add($row[menu_id], $row[id_parent], '$row[menu_name]', null, '', '');\n";
                 }
                 $uplevel = $row['menu_id'];
                 $template.=self::nav_template($uplevel);
-                if($row['id_parent'] == '0')
-                    $template.= '</div>';
+                //if($row['id_parent'] == '0')
+                    //$template.= '</div>';
             }
             else
             {
+                /*
                 if($row['menu_name'] == '首页')
                     $template.= '<li><a href="'.$row['url'].'" target="navTab" rel="main">'.$row['menu_name'].'</a></li>';
                 else
                     $template.= '<li><a href="'.$row['url'].'" target="navTab" rel="page'.$row['menu_id'].'">'.$row['menu_name'].'</a></li>';
-
+                */
+                $template .= "d.add($row[menu_id], $row[id_parent], '$row[menu_name]', '$row[url]', '$row[menu_name]', 'frmright');\n";
             }
         }
-        $template.= "\n</ul>";
+        //$template.= "\n</ul>";
+        $template.= "\n";
         return $template;
     }
 }
