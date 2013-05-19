@@ -1,0 +1,1126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="http://www.uur.cn/wp-content/themes/uur/images/favicon.ico" />
+<title>QUI框架--组件分离版</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript" src="../frame/js/jquery-1.4.js"></script>
+<script type="text/javascript" src="../frame/js/scroll/smoothscroll.js"></script>
+<script>
+	$(function(){
+		$('.framegrid.caption').each(function(){
+			$(".framegrid_cover", this).css({
+				top:"103px",
+				height:"25px"
+			})
+			$(".framegrid_con", this).hide()
+		})	
+	})
+	$.fn.stickyfloat = function(options, lockBottom) {
+				var $obj 				= this;
+				var parentPaddingTop 	= parseInt($obj.parent().css('padding-top'));
+				var startOffset 		= $obj.parent().offset().top;
+				var opts 				= $.extend({ startOffset: startOffset, offsetY: parentPaddingTop, duration: 200, lockBottom:true }, options);
+				
+				$obj.css({ position: 'absolute' });
+				
+				if(opts.lockBottom){
+					var bottomPos = $obj.parent().height() - $obj.height() + parentPaddingTop; //get the maximum scrollTop value
+					if( bottomPos < 0 )
+						bottomPos = 0;
+				}
+				
+				$(window).scroll(function () { 
+					$obj.stop(); // stop all calculations on scroll event
+
+					var pastStartOffset			= $(document).scrollTop() > opts.startOffset;	// check if the window was scrolled down more than the start offset declared.
+					var objFartherThanTopPos	= $obj.offset().top > startOffset;	// check if the object is at it's top position (starting point)
+					var objBiggerThanWindow 	= $obj.outerHeight() < $(window).height();	// if the window size is smaller than the Obj size, then do not animate.
+					
+					// if window scrolled down more than startOffset OR obj position is greater than
+					// the top position possible (+ offsetY) AND window size must be bigger than Obj size
+					if( (pastStartOffset || objFartherThanTopPos) && objBiggerThanWindow ){ 
+						var newpos = ($(document).scrollTop() -startOffset + opts.offsetY );
+						if ( newpos > bottomPos )
+							newpos = bottomPos;
+						if ( $(document).scrollTop() < opts.startOffset ) // if window scrolled < starting offset, then reset Obj position (opts.offsetY);
+							newpos = parentPaddingTop;
+			
+						$obj.animate({ top: newpos }, opts.duration );
+					}
+				});
+			};
+
+			$(function(){
+				$('.quick').stickyfloat({ duration: 400,offsetY:100 });
+			})
+</script>
+<body>
+	<a name="type0"></a>
+	<div class="main">
+	<div class="main_con">
+		<div class="top">
+			<div class="top_left"><img src="images/logo.jpg"/></div>
+			<div class="top_right">
+				<div class="top_right_navLeft"></div>
+				<div class="top_right_navRight">
+					<ul>
+						<li><a href="../index.html">首页</a></li>
+						<li><a href="choose.html">开始体验</a></li>
+						<li><a href="skins_frame.html">框架皮肤中心</a></li>
+						<li><a href="skins_login.html">登录页皮肤中心</a></li>
+						<li class="current">分离版组件</li>
+						<li><a href="update.html">更新说明</a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="banner2"></div>
+		<div class="content2">
+			<div class="split_intro">
+				如果你的WEB应用只需要使用框架的某几个组件或特效，那么不必将整套框架机制全部引入到项目中，使用这里提供的组件与特效的分离版本即可。
+			</div>
+			<a name="type1"></a>
+			<div class="title00">
+				<div class="title00_con">提示与弹窗（9）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/1-1_信息提示/demo.html" target="_blank"><img src="split_preview/01.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">信息提示</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/1-3_弹出式提示框/demo.html" target="_blank"><img src="split_preview/03.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">弹出式提示框</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/1-3_弹出式提示框/demo2.html" target="_blank"><img src="split_preview/43.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">弹出式提示框（综合示例）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/1-4_弹出窗口/demo.html" target="_blank"><img src="split_preview/04.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">弹出窗口</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/1-5_图片弹窗/demo.html" target="_blank"><img src="split_preview/05.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片弹窗</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/1-6_进度条(通用型)/demo.html" target="_blank"><img src="split_preview/06.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">进度条(通用型)</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/1-6_进度条(通用型)/demo2.html" target="_blank"><img src="split_preview/42.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">进度条(通用型)+弹窗</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/1-7_进度条(自定义进度)/demo.html" target="_blank"><img src="split_preview/07.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">进度条(自定义进度)</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/1-8_进度条(迷你型)/demo.html" target="_blank"><img src="split_preview/08.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">进度条(迷你型)</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+	<a name="type2"></a>
+	<div class="title00">
+				<div class="title00_con">表格（3）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/2-1_基本表格/demo.html" target="_blank"><img src="split_preview/09.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">基本表格</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/2-1_基本表格/demo2.html" target="_blank"><img src="split_preview/10.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">含子表的表格</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/2-2_多级树形表格/demo.html" target="_blank"><img src="split_preview/11.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">多级树形表格</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type3"></a>
+<div class="title00">
+				<div class="title00_con">基本表单元素（9）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/3-1_按钮/demo.html" target="_blank"><img src="split_preview/12.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">按钮</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/3-2_单选多选按钮/demo.html" target="_blank"><img src="split_preview/47.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">单选按钮</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/3-2_单选多选按钮/demo2.html" target="_blank"><img src="split_preview/48.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">多选按钮</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/3-3_文本框(域)/demo.html" target="_blank"><img src="split_preview/14.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">文本框</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/3-3_文本框(域)/demo2.html" target="_blank"><img src="split_preview/49.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">文本域</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/3-4_上传控件/demo.html" target="_blank"><img src="split_preview/15.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">上传控件</div>
+		</div>	
+	</div>
+	
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/3-5_单选下拉框/demo.html" target="_blank"><img src="split_preview/16.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">单选下拉框</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/3-6_多选下拉框/demo.html" target="_blank"><img src="split_preview/17.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">多选下拉框</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/3-7_树形下拉框/demo.html" target="_blank"><img src="split_preview/123.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">树形下拉框</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type4"></a>
+<div class="title00">
+				<div class="title00_con">扩展表单元素（11）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">		
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-1_富文本框/demo.html" target="_blank"><img src="split_preview/18.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">富文本框</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-2_双向选择器/demo.html" target="_blank"><img src="split_preview/19.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">双向选择器</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-3_日期控件/demo.html" target="_blank"><img src="split_preview/20.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">日期控件</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-4_时间控件/demo.html" target="_blank"><img src="split_preview/21.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">时间控件</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-5_滑动条/demo.html" target="_blank"><img src="split_preview/22.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">滑动条</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-6_软键盘/demo.html" target="_blank"><img src="split_preview/23.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">软键盘</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-7_步进器/demo.html" target="_blank"><img src="split_preview/24.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">步进器</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-8_颜色选择器/demo.html" target="_blank"><img src="split_preview/25.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">颜色选择器</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-9_标签生成器/demo.html" target="_blank"><img src="split_preview/26.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">标签生成器</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-10_星级评价/demo.html" target="_blank"><img src="split_preview/27.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">星级评价</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/4-11_自动完成文本框/demo.html" target="_blank"><img src="split_preview/28.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">自动完成文本框</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type5"></a>
+<div class="title00">
+				<div class="title00_con">表单整体（9）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">		
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/5-1_表单整体模板/demo.html" target="_blank"><img src="split_preview/29.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">表单整体模板（单列）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/5-1_表单整体模板/demo2.html" target="_blank"><img src="split_preview/29.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">表单整体模板（双列）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/5-1_表单整体模板/demo3.html" target="_blank"><img src="split_preview/41.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">表单整体模板（分组）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/5-2_表单提交的遮罩效果/demo.html" target="_blank"><img src="split_preview/44.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">表单提交的遮罩效果</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/5-2_表单提交的遮罩效果/demo2.html" target="_blank"><img src="split_preview/30.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">表单遮罩+渲染表单元素</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/5-3_表单验证/demo.html" target="_blank"><img src="split_preview/45.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">表单验证</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/5-3_表单验证/demo2.html" target="_blank"><img src="split_preview/31.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">表单验证+渲染表单元素</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/5-4_表单拆分/demo.html" target="_blank"><img src="split_preview/32.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">表单拆分</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/5-4_表单拆分/demo2.html" target="_blank"><img src="split_preview/46.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">表单拆分（无导航）</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type6"></a>
+<div class="title00">
+				<div class="title00_con">文本（8）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">			
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/6-1_文本单行截取/demo.html" target="_blank"><img src="split_preview/33.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">文本单行截取</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/6-2_文本多行截取/demo.html" target="_blank"><img src="split_preview/34.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">文本多行截取</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/6-3_文章列表/demo.html" target="_blank"><img src="split_preview/35.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">文章列表</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/6-4_文字变色/demo.html" target="_blank"><img src="split_preview/36.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">文字变色</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/6-5_文字放大/demo.html" target="_blank"><img src="split_preview/37.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">文字放大</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/6-6_打字效果/demo.html" target="_blank"><img src="split_preview/38.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">打字效果</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/6-7_计分效果/demo.html" target="_blank"><img src="split_preview/39.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">计分效果</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/6-8_文本可编辑/demo.html" target="_blank"><img src="split_preview/40.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">文本可编辑</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type7"></a>
+<div class="title00">
+				<div class="title00_con">图像（13）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">			
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-1_图片列表入场特效/demo.html" target="_blank"><img src="split_preview/50.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片列表入场特效</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-2_图片列表标题特效/demo.html" target="_blank"><img src="split_preview/51.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片列表标题特效</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-3_图片列表移入渐显/demo.html" target="_blank"><img src="split_preview/52.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片列表移入渐显</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-4_图片列表移入放大/demo.html" target="_blank"><img src="split_preview/53.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片列表移入放大</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-5_图片列表移入换图/demo.html" target="_blank"><img src="split_preview/54.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片列表移入换图</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-5_图片列表移入换图/demo2.html" target="_blank"><img src="split_preview/55.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片列表移入换图应用示例</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-6_图片列表边框/demo.html" target="_blank"><img src="split_preview/56.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片列表边框</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-7_图片列表综合实例/demo.html" target="_blank"><img src="split_preview/57.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片列表综合实例</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-8_图片单图边框/demo.html" target="_blank"><img src="split_preview/58.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片单图边框</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-9_图片预览/demo.html" target="_blank"><img src="split_preview/59.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片预览</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-10_图片区域放大/demo.html" target="_blank"><img src="split_preview/60.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片区域放大</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-11_图片幻灯(JS版)/demo.html" target="_blank"><img src="split_preview/61.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片幻灯（JS版）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/7-12_图片幻灯(Flash版)/demo.html" target="_blank"><img src="split_preview/62.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片幻灯（Flash版）</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type8"></a>
+<div class="title00">
+				<div class="title00_con">树与菜单（9）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">			
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/8-1_基本树结构/demo.html" target="_blank"><img src="split_preview/63.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">基本树结构</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/8-2_多功能树结构/demo.html" target="_blank"><img src="split_preview/64.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">多功能树结构</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/8-3_弹出式菜单/demo.html" target="_blank"><img src="split_preview/65.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">弹出式菜单</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/8-4_简易型菜单/demo.html" target="_blank"><img src="split_preview/66.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">简易型菜单</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/8-5_右键菜单/demo.html" target="_blank"><img src="split_preview/67.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">右键菜单</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/8-6_横向多级导航菜单/demo.html" target="_blank"><img src="split_preview/68.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">横向多级导航菜单</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/8-7_纵向多级导航菜单/demo.html" target="_blank"><img src="split_preview/69.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">纵向多级导航菜单</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/8-8_篮子菜单/demo.html" target="_blank"><img src="split_preview/71.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">篮子菜单</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/8-9_mac风格菜单/demo.html" target="_blank"><img src="split_preview/70.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">mac风格菜单</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type9"></a>
+<div class="title00">
+				<div class="title00_con">导航与布局（16）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">			
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-1_常规选项卡/demo.html" target="_blank"><img src="split_preview/72.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">常规选项卡</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-12_常规选项卡(轻量)/demo.html" target="_blank"><img src="split_preview/124.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">常规选项卡(轻量)</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-2_多功能选项卡/demo.html" target="_blank"><img src="split_preview/73.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">多功能选项卡</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-3_动态选项卡/demo.html" target="_blank"><img src="split_preview/74.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">动态选项卡</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-4_一级纵向导航/demo.html" target="_blank"><img src="split_preview/75.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">一级纵向导航</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-4_一级纵向导航/demo2.html" target="_blank"><img src="split_preview/75.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">一级纵向导航应用实例</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-5_多级抽屉型导航/demo.html" target="_blank"><img src="split_preview/76.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">多级抽屉型导航</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-5_多级抽屉型导航/demo2.html" target="_blank"><img src="split_preview/77.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">多级抽屉型导航（图标版）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-6_纵向抽屉容器/demo.html" target="_blank"><img src="split_preview/78.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">纵向抽屉容器</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-7_布局框架/demo.html" target="_blank"><img src="split_preview/79.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">布局框架</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-7_布局框架/demo2.html" target="_blank"><img src="split_preview/80.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">布局框架应用实例</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-8_当前位置样式/demo.html" target="_blank"><img src="split_preview/81.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">当前位置样式</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-9_分页样式/demo.html" target="_blank"><img src="split_preview/82.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">分页样式</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-9_分页样式/demo.html" target="_blank"><img src="split_preview/83.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">分页样式（下拉框渲染）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-10_图标导航/demo.html" target="_blank"><img src="split_preview/84.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图标导航</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/9-11_图标工具栏/demo.html" target="_blank"><img src="split_preview/85.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图标工具栏</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type10"></a>
+<div class="title00">
+				<div class="title00_con">滚动（10）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">			
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-1_不间断滚动/demo.html" target="_blank"><img src="split_preview/86.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">不间断滚动</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-2_可控的左右滚动/demo.html" target="_blank"><img src="split_preview/87.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">可控的左右滚动</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-3_上下滚动新闻/demo.html" target="_blank"><img src="split_preview/88.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">上下滚动新闻</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-4_淡入淡出新闻/demo.html" target="_blank"><img src="split_preview/89.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">淡入淡出新闻</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-5_打字效果新闻/demo.html" target="_blank"><img src="split_preview/90.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">打字效果新闻</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-6_区域滚动条(纵向)/demo.html" target="_blank"><img src="split_preview/91.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">区域滚动条(纵向)</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-7_区域滚动条(横向)/demo.html" target="_blank"><img src="split_preview/92.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">区域滚动条(横向)</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-8_横向内容展示/demo.html" target="_blank"><img src="split_preview/93.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">横向内容展示</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-9_平滑锚点(局部)/demo.html" target="_blank"><img src="split_preview/94.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">平滑锚点(局部)</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/10-10_平滑锚点/demo.html" target="_blank"><img src="split_preview/95.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">平滑锚点</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type11"></a>
+<div class="title00">
+				<div class="title00_con">拖拽（7）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">			
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/11-1_拖拽移动/demo.html" target="_blank"><img src="split_preview/96.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">拖拽移动</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/11-2_拖拽变形/demo.html" target="_blank"><img src="split_preview/97.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">拖拽变形</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/11-3_拖放与接收/demo.html" target="_blank"><img src="split_preview/98.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">拖放与接收</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/11-3_拖放与接收/demo2.html" target="_blank"><img src="split_preview/99.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">拖放与接收（移除自己）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/11-3_拖放与接收/demo3.html" target="_blank"><img src="split_preview/100.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">拖放与接收（匹配拖拽）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/11-4_列表拖拽排序/demo.html" target="_blank"><img src="split_preview/101.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">列表拖拽排序</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/11-5_面板拖放(portal)/demo.html" target="_blank"><img src="split_preview/102.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">面板拖放(portal)</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+
+<a name="type12"></a>
+<div class="title00">
+				<div class="title00_con">其他应用实例（21）</div>
+			</div>
+			<div class="box_top"></div>
+			<div class="box_middle">
+				<div class="box_item">			
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-1_flash图表用法/demo.html" target="_blank"><img src="split_preview/103.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">flash图表用法</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-2_仪表盘/demo.html" target="_blank"><img src="split_preview/104.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">仪表盘</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-3_日程安排/demo.html" target="_blank"><img src="split_preview/105.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">日程安排（不可编辑状态）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-3_日程安排/demo2.html" target="_blank"><img src="split_preview/105.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">日程安排（编辑状态）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-3_日程安排/demo3.html" target="_blank"><img src="split_preview/106.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">日程安排（通过拖拽添加）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-3_日程安排/demo4.html" target="_blank"><img src="split_preview/107.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">日程安排（显示星期和每日模式）</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-4_为图片添加标注/demo.html" target="_blank"><img src="split_preview/108.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">为图片添加标注</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-5_图片裁剪/demo.html" target="_blank"><img src="split_preview/109.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">图片裁剪</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-6_鼠标擦除/demo.html" target="_blank"><img src="split_preview/110.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">鼠标擦除</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-7_翻转效果/demo.html" target="_blank"><img src="split_preview/111.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">翻转效果</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-8_模拟命令行窗口/demo.html" target="_blank"><img src="split_preview/112.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">模拟命令行窗口</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-9_小型备忘录/demo.html" target="_blank"><img src="split_preview/113.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">小型备忘录</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-10_自定位置的工具栏/demo.html" target="_blank"><img src="split_preview/114.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">自定位置的工具栏</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-11_组织结构图/demo.html" target="_blank"><img src="split_preview/115.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">组织结构图</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-12_鼠标手势/demo.html" target="_blank"><img src="split_preview/116.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">鼠标手势</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-13_物品360(自动)/demo.html" target="_blank"><img src="split_preview/117.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">物品360(自动)</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-14_物品360(手动)/demo.html" target="_blank"><img src="split_preview/118.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">物品360(手动)</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-15_计算器(仅限IE)/demo.html" target="_blank"><img src="split_preview/119.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">计算器(仅限IE)</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-16_城市多选器/demo.html" target="_blank"><img src="split_preview/120.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">城市多选器</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-17_标签云/demo.html" target="_blank"><img src="split_preview/121.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">标签云</div>
+		</div>	
+	</div>
+	
+	<div class="framegrid caption">
+		<div class="picItem3"><a href="../split/12-18_得到焦点效果/demo.html" target="_blank"><img src="split_preview/122.jpg"/></a></div>
+		<div class="framegrid_cover">
+			<div class="framegrid_title">得到焦点效果</div>
+		</div>	
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="box_bottom"></div>
+			
+		</div>
+		<div class="foot">
+			QUI网页界面集成框架 COPYRIGHT 2010 @ www.quickui.net
+		</div>
+	</div>
+	</div>
+	
+	<div class="quick">
+		<div class="quick_top"></div>
+		<div class="quick_middle">
+			<ul>
+				<li><a href="#type1">提示与弹窗（9）</a></li>
+				<li><a href="#type2">表格（3）</a></li>
+				<li><a href="#type3">基本表单元素（9）</a></li>
+				<li><a href="#type4">扩展表单元素（11）</a></li>
+				<li><a href="#type5">表单整体（9）</a></li>
+				<li><a href="#type6">文本（8）</a></li>
+				<li><a href="#type7">图像（13）</a></li>
+				<li><a href="#type8">树与菜单（9）</a></li>
+				<li><a href="#type9">导航与布局（16）</a></li>
+				<li><a href="#type10">滚动（10）</a></li>
+				<li><a href="#type11">拖拽（7）</a></li>
+				<li><a href="#type12">其他应用实例（21）</a></li>
+				<li><a href="#type0">回顶部</a></li>
+			</ul>
+		</div>
+		<div class="quick_bottom"></div>
+	</div>
+</body>
+</html>
