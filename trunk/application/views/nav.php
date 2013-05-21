@@ -1,6 +1,6 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!--框架必需start-->
 <script type="text/javascript" src="/public/assets/js/jquery-1.4.js"></script>
@@ -13,20 +13,17 @@
 <script>
 	//打开内页时出现进度条
 	$(function(){
-		$(".dTreeNode a[target*=frmright]").click(function(){
-			showProgressBar();
+		$(".dTreeNode a[target*=frmright]").click(function(e){
+			//阻止点击链接的默认行为（否则会链接过去了）
+			e.preventDefault();
+			//打开内页时出现进度条
+			//showProgressBar();
+			//调用方法弹出tab
+			top.frmright.tabAddHandler($(this).attr("id"),$(this).text(),$(this).attr("href"))
 		})
 	})
 </script>
-</head>
-<script>
-	//打开内页时出现进度条
-	$(function(){
-		$(".dTreeNode a[target*=frmright]").click(function(){
-			showProgressBar();
-		})
-	})
-</script>
+
 </head>
 <body leftFrame="true">
 	<div style="text-align:center;" >
@@ -36,7 +33,7 @@
 	<div id="scrollContent">
 	<script type="text/javascript">
 		<!--
-        var d = new dTree('d');d.add(0,-1,'操作目录');
+        d = new dTree('d');d.add(0,-1,'操作目录');
         
         <?php  echo $template?>
         	 

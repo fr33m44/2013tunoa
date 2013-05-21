@@ -6,16 +6,16 @@ class Unit extends CI_Controller
         parent::__construct();
     }
     /*
-     * ÏÔÊ¾µ¥Î»ÐÅÏ¢
+     * æ˜¾ç¤ºå•ä½ä¿¡æ¯
      */
     function index()
     {
         $this->load->model('cfg_model');
-        $data['cfgs']=$this->cfg_model->get_cfg(1); //1ÊÇµ¥Î»¹ÜÀíÏà¹ØÉèÖÃ
+        $data['cfgs']=$this->cfg_model->get_cfg(1); //1æ˜¯å•ä½ç®¡ç†ç›¸å…³è®¾ç½®
         $this->load->view('sys/unit',$data);
     }
     /*
-     * ¸üÐÂµ¥Î»ÐÅÏ¢
+     * æ›´æ–°å•ä½ä¿¡æ¯
      */
     function update()
     {
@@ -39,7 +39,7 @@ class Unit extends CI_Controller
         }
         $ret=array(
             'statusCode'=>'200',
-            'message'=>'±£´æ³É¹¦',
+            'message'=>'ä¿å­˜æˆåŠŸ',
             'navTabId'=>'',
             'callbackType'=>'',
             'forwardUrl'=>''
@@ -47,7 +47,7 @@ class Unit extends CI_Controller
         echo json_encode($ret);
     }
     /*
-     * ×éÖ¯½á¹¹Ê÷
+     * ç»„ç»‡ç»“æž„æ ‘
      */
     function tree()
     {

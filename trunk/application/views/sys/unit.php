@@ -14,8 +14,8 @@
 <?= $cfg['cfg_name'] ?>：
                         </td>
                         <td>
-<?php if ($cfg['cfg_type'] == 'text') { ?><input name="value[<?= $cfg['cfg_id'] ?>]" type="text" value="<?= $cfg['cfg_value']->read($cfg['cfg_value']->size()) ?>" size="40" /><?php } ?>
-<?php if ($cfg['cfg_type'] == 'textarea') { ?><textarea name="value[<?= $cfg['cfg_id'] ?>]" class="editor" cols="100" rows="11"><?= $cfg['cfg_value']->read($cfg['cfg_value']->size()) ?></textarea><?php } ?>
+<?php if ($cfg['cfg_type'] == 'text') { ?><input name="value[<?= $cfg['cfg_id'] ?>]" type="text" value="<?= $cfg['cfg_value'] ?>" size="40" /><?php } ?>
+<?php if ($cfg['cfg_type'] == 'textarea') { ?><textarea name="value[<?= $cfg['cfg_id'] ?>]" class="editor" cols="100" rows="11"><?= $cfg['cfg_value'] ?></textarea><?php } ?>
 
                         </td>
                     </tr>
