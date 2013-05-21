@@ -25,6 +25,10 @@ class Index extends CI_Controller
         }
         $this->load->view('index', $data);
     }
+    function shortcut()
+    {
+        $this->load->view('shortcut');
+    }
     function nav()
     {
         $this->load->helper('url');
