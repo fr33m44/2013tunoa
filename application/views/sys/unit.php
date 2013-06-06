@@ -8,21 +8,18 @@
 <link  rel="stylesheet" type="text/css" id="skin" prePath="/public/assets/" />
 <!--框架必需end-->
 
-<!--修正IE6不支持PNG图start-->
-<script type="text/javascript" src="/public/assets/js/method/pngFix/supersleight.js"></script>
-<!--修正IE6不支持PNG图end-->
+<!--多选框脚本start-->
+<script type="text/javascript" src="/public/assets/js/form/multiselect.js"></script>
+<!--多选框脚本end-->
+<!--多选框脚本start-->
+<script type="text/javascript" src="/public/assets/js/form/multiselect.js"></script>
+<!--多选框脚本end-->
+<!--表单验证脚本start-->
+<script src="/public/assets/js/form/validationEngine-cn.js" type="text/javascript"></script>
+<script src="/public/assets/js/form/validationEngine.js" type="text/javascript"></script>
+<!--表单验证脚本end-->
 
-<!--鼠标移入变色start-->
-<script>
-	$(function(){
-		$(".navIcon").hover(function(){
-			$(this).addClass("navIcon_hover");
-		},function(){
-			$(this).removeClass("navIcon_hover");
-		})
-	})
-</script>
-<!--鼠标移入变色end-->
+
 <body>
 <div class="position">
 	<div class="center">
@@ -35,6 +32,7 @@
 </div>	
 <div id="scrollContent">
     <div class="box2" panelTitle="单位管理" showStatus="false">
+    <form method="post" action="index.php?d=sys&c=unit&m=update">
     <table class="tableStyle" transMode="true">
 <?php foreach ($cfgs as $cfg) { ?>
         <tr>
@@ -45,11 +43,11 @@
             <td>
     <?php if ($cfg['cfg_type'] == 'text') { ?>
             <label for="value[<?= $cfg['cfg_id'] ?>]">
-                <input name="value[<?= $cfg['cfg_id'] ?>]" type="text" value="<?= $cfg['cfg_value'] ?>" style="width:500px" />
+                <input name="value[<?= $cfg['cfg_id'] ?>]" type="text" value="<?= $cfg['cfg_value'] ?>"  style="width:500px" class="textinput <?=$cfg['validate']?>"/>
     <?php } ?>
             </label>
     <?php if ($cfg['cfg_type'] == 'textarea') { ?>
-            <span class="float_left"><textarea name="value[<?= $cfg['cfg_id'] ?>]"  style="width:500px"><?= $cfg['cfg_value']?></textarea></span>
+            <span class="float_left"><textarea name="value[<?= $cfg['cfg_id'] ?>]"  style="width:500px;height:100px" class="textinput <?=$cfg['validate']?>"><?= $cfg['cfg_value']?></textarea></span>
     <?php } ?>
     
             </td>
@@ -62,6 +60,7 @@
         	</td>
         </tr>
     </table>
+    </form>
     </div>
 </div>
 </body>
