@@ -11,13 +11,22 @@
 <!--多选框脚本start-->
 <script type="text/javascript" src="/public/assets/js/form/multiselect.js"></script>
 <!--多选框脚本end-->
-<!--多选框脚本start-->
-<script type="text/javascript" src="/public/assets/js/form/multiselect.js"></script>
-<!--多选框脚本end-->
 <!--表单验证脚本start-->
+<script type="text/javascript" src="/public/assets/js/form/loadmask.js"></script>
 <script src="/public/assets/js/form/validationEngine-cn.js" type="text/javascript"></script>
 <script src="/public/assets/js/form/validationEngine.js" type="text/javascript"></script>
 <!--表单验证脚本end-->
+<script>
+$(document).ready(function(){
+	$("#submit").bind("click", function () {
+		$("#form_div").mask("表单正在提交...");
+	});
+	
+	$("#cancel").bind("click", function () {
+		$("#form_div").unmask();
+	});
+});
+</script>
 
 
 <body>
@@ -31,7 +40,7 @@
 	</div>
 </div>	
 <div id="scrollContent">
-    <div class="box2" panelTitle="单位管理" showStatus="false">
+    <div class="box2" panelTitle="单位管理" showStatus="false"  id="form_div">
     <form method="post" action="index.php?d=sys&c=unit&m=update">
     <table class="tableStyle" transMode="true">
 <?php foreach ($cfgs as $cfg) { ?>
@@ -55,8 +64,8 @@
 <?php } ?>
         <tr>
         	<td colspan="2">
-        		<input type="submit" value=" 提 交 "/>
-        		<input type="reset" value=" 重 置 "/>
+        		<input type="submit" id="submit" value=" 提 交 "/>
+        		<input type="button" id="cancel" value=" 取 消 "/>
         	</td>
         </tr>
     </table>

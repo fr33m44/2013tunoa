@@ -19,6 +19,7 @@ class Unit extends CI_Controller
      */
     function update()
     {
+        sleep(5);
         $arr = array();
         $post=$this->input->post();
         $tablename = $this->db->dbprefix('cfg');
@@ -33,8 +34,18 @@ class Unit extends CI_Controller
         {
             if($arr[$key] != $val)
             {
-                $sql = "UPDATE " . $tablename . " SET cfg_value = '" . trim($val) . "' WHERE cfg_id =  " . $key . " ";
-                $this->db->query($sql);
+                //$sql = "UPDATE " . $tablename . " SET cfg_value = '" . trim($val) . "' WHERE cfg_id =  " . $key . " ";
+                $this->db->bind('@tablename', $tablename);
+                $this->db->bind('@cfg_value', $cfg_value);
+                $this->db->bind('@cfg_id', $cfg_id);
+                $this->db->query("UPDATE @tablename SET cfg_value = @cfg_value WHERE cfg_id=@cfg_id", array($tablename, $val, $key));
+                /*
+                $data = array(
+                    'cfg_value' => $val
+                );
+                $this->db->where('cfg_id', $key);
+                $this->db->update($tablename, $data);
+                */
             }
         }
         $ret=array(
