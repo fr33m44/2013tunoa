@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -48,9 +48,9 @@ class CI_DB_odbc_driver extends CI_DB {
 	var $_random_keyword;
 
 
-	function CI_DB_odbc_driver($params)
+	function __construct($params)
 	{
-		parent::CI_DB($params);
+		parent::__construct($params);
 
 		$this->_random_keyword = ' RND('.time().')'; // database specific random keyword
 	}
@@ -339,6 +339,7 @@ class CI_DB_odbc_driver extends CI_DB {
 		}
 
 		$row = $query->row();
+		$this->_reset_select();
 		return (int) $row->numrows;
 	}
 
