@@ -11,15 +11,30 @@
 <!--多选框脚本start-->
 <script type="text/javascript" src="/public/assets/js/form/multiselect.js"></script>
 <!--多选框脚本end-->
+
 <!--表单验证脚本start-->
 <script type="text/javascript" src="/public/assets/js/form/loadmask.js"></script>
 <script src="/public/assets/js/form/validationEngine-cn.js" type="text/javascript"></script>
 <script src="/public/assets/js/form/validationEngine.js" type="text/javascript"></script>
 <!--表单验证脚本end-->
+
 <script>
 $(document).ready(function(){
+	var str="";
 	$("#submit").bind("click", function () {
 		$("#form_div").mask("表单正在提交...");
+		str = $("form").serialize();
+		
+		$.ajax({
+			type: "POST",
+			url: "index.php?d=sys&c=unit&m=update",
+			data: str,
+			success: function(msg, textStatus){
+				alert(msg);
+			}
+		});
+		
+		$("#form_div").unmask();
 	});
 	
 	$("#cancel").bind("click", function () {
@@ -41,7 +56,7 @@ $(document).ready(function(){
 </div>	
 <div id="scrollContent">
     <div class="box2" panelTitle="单位管理" showStatus="false"  id="form_div">
-    <form method="post" action="index.php?d=sys&c=unit&m=update">
+    <form>
     <table class="tableStyle" transMode="true">
 <?php foreach ($cfgs as $cfg) { ?>
         <tr>
@@ -52,11 +67,11 @@ $(document).ready(function(){
             <td>
     <?php if ($cfg['cfg_type'] == 'text') { ?>
             <label for="value[<?= $cfg['cfg_id'] ?>]">
-                <input name="value[<?= $cfg['cfg_id'] ?>]" type="text" value="<?= $cfg['cfg_value'] ?>"  style="width:500px" class="textinput <?=$cfg['validate']?>"/>
+                <input name="value[<?= $cfg['cfg_id'] ?>]" type="text" value="<?= $cfg['cfg_value'] ?>"  style="width:500px" class="textinput"/>
     <?php } ?>
             </label>
     <?php if ($cfg['cfg_type'] == 'textarea') { ?>
-            <span class="float_left"><textarea name="value[<?= $cfg['cfg_id'] ?>]"  style="width:500px;height:100px" class="textinput <?=$cfg['validate']?>"><?= $cfg['cfg_value']?></textarea></span>
+            <span class="float_left"><textarea name="value[<?= $cfg['cfg_id'] ?>]"  style="width:500px;height:100px" class="textinput"><?= $cfg['cfg_value']?></textarea></span>
     <?php } ?>
     
             </td>
@@ -64,7 +79,7 @@ $(document).ready(function(){
 <?php } ?>
         <tr>
         	<td colspan="2">
-        		<input type="submit" id="submit" value=" 提 交 "/>
+        		<input type="button" id="submit" value=" 提 交 "/>
         		<input type="button" id="cancel" value=" 取 消 "/>
         	</td>
         </tr>

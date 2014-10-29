@@ -19,7 +19,7 @@ class Unit extends CI_Controller
      */
     function update()
     {
-        sleep(5);
+        //sleep(5);
         $arr = array();
         $post=$this->input->post();
         $tablename = $this->db->dbprefix('cfg');
@@ -39,23 +39,11 @@ class Unit extends CI_Controller
                 $this->db->bind('@cfg_value', $cfg_value);
                 $this->db->bind('@cfg_id', $cfg_id);
                 $this->db->query("UPDATE @tablename SET cfg_value = @cfg_value WHERE cfg_id=@cfg_id", array($tablename, $val, $key));
-                /*
-                $data = array(
-                    'cfg_value' => $val
-                );
-                $this->db->where('cfg_id', $key);
-                $this->db->update($tablename, $data);
-                */
+                
             }
         }
-        $ret=array(
-            'statusCode'=>'200',
-            'message'=>'保存成功',
-            'navTabId'=>'',
-            'callbackType'=>'',
-            'forwardUrl'=>''
-        );
-        echo json_encode($ret);
+		
+		echo "保存成功";
     }
     /*
      * 组织结构树
