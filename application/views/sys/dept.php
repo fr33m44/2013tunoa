@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<div class="box1" panelWidth="800">
+<div class="box1">
     <table class="tableStyle" formMode="line">
     	<tr>
     		<td>选中节点：</td>
