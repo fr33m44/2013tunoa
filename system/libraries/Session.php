@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -97,7 +97,7 @@ class CI_Session {
 		{
 			$this->sess_expiration = (60*60*24*365*2);
 		}
-		
+
 		// Set the cookie name
 		$this->sess_cookie_name = $this->cookie_prefix.$this->sess_cookie_name;
 
@@ -144,24 +144,40 @@ class CI_Session {
 			return FALSE;
 		}
 
+		// HMAC authentication
+		$len = strlen($session) - 40;
+
+		if ($len <= 0)
+		{
+			log_message('error', 'Session: The session cookie was not signed.');
+			return FALSE;
+		}
+
+		// Check cookie authentication
+		$hmac = substr($session, $len);
+		$session = substr($session, 0, $len);
+
+		// Time-attack-safe comparison
+		$hmac_check = hash_hmac('sha1', $session, $this->encryption_key);
+		$diff = 0;
+
+		for ($i = 0; $i < 40; $i++)
+		{
+			$xor = ord($hmac[$i]) ^ ord($hmac_check[$i]);
+			$diff |= $xor;
+		}
+
+		if ($diff !== 0)
+		{
+			log_message('error', 'Session: HMAC mismatch. The session cookie data did not match what was expected.');
+			$this->sess_destroy();
+			return FALSE;
+		}
+
 		// Decrypt the cookie data
 		if ($this->sess_encrypt_cookie == TRUE)
 		{
 			$session = $this->CI->encrypt->decode($session);
-		}
-		else
-		{
-			// encryption was not used, so we need to check the md5 hash
-			$hash	 = substr($session, strlen($session)-32); // get last 32 chars
-			$session = substr($session, 0, strlen($session)-32);
-
-			// Does the md5 hash match?  This is to prevent manipulation of session data in userspace
-			if ($hash !==  md5($session.$this->encryption_key))
-			{
-				log_message('error', 'The session cookie data did not match what was expected. This could be a possible hacking attempt.');
-				$this->sess_destroy();
-				return FALSE;
-			}
 		}
 
 		// Unserialize the session array
@@ -189,7 +205,7 @@ class CI_Session {
 		}
 
 		// Does the User Agent Match?
-		if ($this->sess_match_useragent == TRUE AND trim($session['user_agent']) != trim(substr($this->CI->input->user_agent(), 0, 50)))
+		if ($this->sess_match_useragent == TRUE AND trim($session['user_agent']) != trim(substr($this->CI->input->user_agent(), 0, 120)))
 		{
 			$this->sess_destroy();
 			return FALSE;
@@ -316,8 +332,9 @@ class CI_Session {
 		$this->userdata = array(
 							'session_id'	=> md5(uniqid($sessid, TRUE)),
 							'ip_address'	=> $this->CI->input->ip_address(),
-							'user_agent'	=> substr($this->CI->input->user_agent(), 0, 50),
-							'last_activity'	=> $this->now
+							'user_agent'	=> substr($this->CI->input->user_agent(), 0, 120),
+							'last_activity'	=> $this->now,
+							'user_data'		=> ''
 							);
 
 
@@ -398,7 +415,7 @@ class CI_Session {
 	function sess_destroy()
 	{
 		// Kill the session DB row
-		if ($this->sess_use_database === TRUE AND isset($this->userdata['session_id']))
+		if ($this->sess_use_database === TRUE && isset($this->userdata['session_id']))
 		{
 			$this->CI->db->where('session_id', $this->userdata['session_id']);
 			$this->CI->db->delete($this->sess_table_name);
@@ -413,6 +430,9 @@ class CI_Session {
 					$this->cookie_domain,
 					0
 				);
+
+		// Kill session data
+		$this->userdata = array();
 	}
 
 	// --------------------------------------------------------------------
@@ -435,11 +455,11 @@ class CI_Session {
 	 * Fetch all session data
 	 *
 	 * @access	public
-	 * @return	mixed
+	 * @return	array
 	 */
 	function all_userdata()
 	{
-		return ( ! isset($this->userdata)) ? FALSE : $this->userdata;
+		return $this->userdata;
 	}
 
 	// --------------------------------------------------------------------
@@ -652,23 +672,20 @@ class CI_Session {
 		{
 			$cookie_data = $this->CI->encrypt->encode($cookie_data);
 		}
-		else
-		{
-			// if encryption is not used, we provide an md5 hash to prevent userside tampering
-			$cookie_data = $cookie_data.md5($cookie_data.$this->encryption_key);
-		}
+
+		$cookie_data .= hash_hmac('sha1', $cookie_data, $this->encryption_key);
 
 		$expire = ($this->sess_expire_on_close === TRUE) ? 0 : $this->sess_expiration + time();
 
 		// Set the cookie
 		setcookie(
-					$this->sess_cookie_name,
-					$cookie_data,
-					$expire,
-					$this->cookie_path,
-					$this->cookie_domain,
-					$this->cookie_secure
-				);
+			$this->sess_cookie_name,
+			$cookie_data,
+			$expire,
+			$this->cookie_path,
+			$this->cookie_domain,
+			$this->cookie_secure
+		);
 	}
 
 	// --------------------------------------------------------------------

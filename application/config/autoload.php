@@ -52,7 +52,7 @@ $autoload['packages'] = array(APPPATH.'third_party');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database','session'); //鍩烘湰涓婃瘡涓〉闈㈤兘闇�瑕佷娇鐢ㄦ暟鎹簱锛屾墍浠ュ湪杩欓噷鍔犺浇
+$autoload['libraries'] = array('database','session'); //基本上每个页面都需要使用数据库，所以在这里加载
 
 
 /*

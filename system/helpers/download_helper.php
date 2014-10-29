@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -58,13 +58,13 @@ if ( ! function_exists('force_download'))
 		$extension = end($x);
 
 		// Load the mime types
-		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/mimes'.EXT))
+		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/mimes.php'))
 		{
-			include(APPPATH.'config/'.ENVIRONMENT.'/mimes'.EXT);
+			include(APPPATH.'config/'.ENVIRONMENT.'/mimes.php');
 		}
-		elseif (is_file(APPPATH.'config/mimes'.EXT))
+		elseif (is_file(APPPATH.'config/mimes.php'))
 		{
-			include(APPPATH.'config/mimes'.EXT);
+			include(APPPATH.'config/mimes.php');
 		}
 
 		// Set a default mime if we can't find it
@@ -80,7 +80,7 @@ if ( ! function_exists('force_download'))
 		// Generate the server headers
 		if (strpos($_SERVER['HTTP_USER_AGENT'], "MSIE") !== FALSE)
 		{
-			header('Content-Type: "'.$mime.'"');
+			header('Content-Type: '.$mime);
 			header('Content-Disposition: attachment; filename="'.$filename.'"');
 			header('Expires: 0');
 			header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -90,7 +90,7 @@ if ( ! function_exists('force_download'))
 		}
 		else
 		{
-			header('Content-Type: "'.$mime.'"');
+			header('Content-Type: '.$mime);
 			header('Content-Disposition: attachment; filename="'.$filename.'"');
 			header("Content-Transfer-Encoding: binary");
 			header('Expires: 0');
@@ -101,7 +101,6 @@ if ( ! function_exists('force_download'))
 		exit($data);
 	}
 }
-
 
 /* End of file download_helper.php */
 /* Location: ./system/helpers/download_helper.php */

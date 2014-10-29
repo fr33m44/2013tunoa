@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -84,13 +84,13 @@ class CI_User_agent {
 	 */
 	private function _load_agent_file()
 	{
-		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/user_agents'.EXT))
+		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/user_agents.php'))
 		{
-			include(APPPATH.'config/'.ENVIRONMENT.'/user_agents'.EXT);
+			include(APPPATH.'config/'.ENVIRONMENT.'/user_agents.php');
 		}
-		elseif (is_file(APPPATH.'config/user_agents'.EXT))
+		elseif (is_file(APPPATH.'config/user_agents.php'))
 		{
-			include(APPPATH.'config/user_agents'.EXT);
+			include(APPPATH.'config/user_agents.php');
 		}
 		else
 		{
@@ -142,7 +142,7 @@ class CI_User_agent {
 	{
 		$this->_set_platform();
 
-		foreach (array('_set_browser', '_set_robot', '_set_mobile') as $function)
+		foreach (array('_set_robot', '_set_browser', '_set_mobile') as $function)
 		{
 			if ($this->$function() === TRUE)
 			{
