@@ -23,26 +23,25 @@ class Unit extends CI_Controller
         $arr = array();
         $post=$this->input->post();
         $tablename = $this->db->dbprefix('cfg');
-        $sql = 'SELECT cfg_id,cfg_value FROM '.$tablename;
-        $query= $this->db->query($sql);
+        //$sql = 'SELECT cfg_id,cfg_value FROM '.$tablename;
+        $query= $this->db->get_where($tablename, array('parent_id' => '1'));
         $result=$query->result_array();
         foreach ($result as $row)
         {
             $arr[$row['cfg_id']] = $row['cfg_value'];
         }
+        
         foreach ($post['value'] AS $key => $val)
         {
-            if($arr[$key] != $val)
+            if($arr[$key] != $val)//有更新内容
             {
-                //$sql = "UPDATE " . $tablename . " SET cfg_value = '" . trim($val) . "' WHERE cfg_id =  " . $key . " ";
-                $this->db->bind('@tablename', $tablename);
-                $this->db->bind('@cfg_value', $cfg_value);
-                $this->db->bind('@cfg_id', $cfg_id);
-                $this->db->query("UPDATE @tablename SET cfg_value = @cfg_value WHERE cfg_id=@cfg_id", array($tablename, $val, $key));
-                
+                $data = array(
+                    'cfg_value' => $val
+                );
+                $this->db->where('cfg_id1', $key);
+                $aaa = $this->db->update($tablename, $data);
             }
         }
-		
 		echo "保存成功";
     }
     /*
