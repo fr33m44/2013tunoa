@@ -59,7 +59,6 @@
 				<span class="icon_btn_up hand" id="fullSrceen" hideLeft="false">全屏</span> <!--如果将hideLeft设为true则全屏时左侧也会被隐藏-->
 				<span class="icon_mark hand" onclick='top.Dialog.open({URL:"index.php?c=skin&m=index",Title:"皮肤管理",Width:720,Height:445});'>皮肤管理</span>
 				<span class="icon_no hand" onclick='top.Dialog.confirm("确定要退出系统吗",function(){window.location="login.html"});'>退出系统</span>
-				<a href="../pages/choose.html"><span class="icon_home hand">返回结构选择</span></a>
 				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
