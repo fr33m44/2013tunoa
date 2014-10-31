@@ -27,10 +27,11 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type: "POST",
+            contentType:"application/x-www-form-urlencoded; charset=utf-8",
 			url: "index.php?d=sys&c=unit&m=update",
 			data: str,
 			success: function(msg, textStatus){
-				alert(msg);
+				top.Dialog.alert(msg);
 			}
 		});
 		
