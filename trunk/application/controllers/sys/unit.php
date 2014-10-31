@@ -20,6 +20,7 @@ class Unit extends CI_Controller
     function update()
     {
         //sleep(5);
+        $ret = FALSE;
         $arr = array();
         $post=$this->input->post();
         $tablename = $this->db->dbprefix('cfg');
@@ -38,11 +39,11 @@ class Unit extends CI_Controller
                 $data = array(
                     'cfg_value' => $val
                 );
-                $this->db->where('cfg_id1', $key);
-                $aaa = $this->db->update($tablename, $data);
+                $this->db->where('cfg_id', $key);
+                $ret = $this->db->update($tablename, $data);
             }
         }
-		echo "保存成功";
+        var_dump($ret);
     }
     /*
      * 组织结构树
